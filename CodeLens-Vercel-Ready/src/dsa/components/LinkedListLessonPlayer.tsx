@@ -339,8 +339,8 @@ export function LinkedListLessonPlayer({
             VISUAL EXECUTION
         ================================================= */}
 
-        <div className="overflow-hidden rounded-xl border border-[#c8dfcb] bg-[#fffaf0]">
-
+        
+        <div className="overflow-visible rounded-xl border border-[#c8dfcb] bg-[#fffaf0]">
           {/* HEADER */}
 
           <div className="flex items-center justify-between border-b border-[#dbe8d9] px-4 py-3">
@@ -378,7 +378,7 @@ export function LinkedListLessonPlayer({
 
                   {/* NEW NODE BOX */}
 
-                  <div className="relative grid h-16 w-24 shrink-0 grid-cols-[1fr_28px] overflow-hidden rounded-xl border-2 border-[#7ca27b] bg-[#dcebd9] shadow-sm">
+                  <div className="relative grid h-16 w-20 shrink-0 grid-cols-[1fr_28px] overflow-hidden rounded-xl border-2 border-[#7ca27b] bg-[#dcebd9] shadow-sm">
 
                     {/* DATA */}
 
@@ -474,8 +474,8 @@ export function LinkedListLessonPlayer({
               </div>
 
             ) : (
-
-              <div className="flex min-h-[130px] items-center overflow-x-auto pb-5 pt-8">
+            <div className="flex min-h-[200px] w-full flex-wrap content-start items-start justify-center gap-y-10 overflow-visible px-2 pb-6 pt-2">
+              
 
                 {visual.nodes.map(
                   (
@@ -506,13 +506,13 @@ export function LinkedListLessonPlayer({
 
                         {/* NODE */}
 
-                        <div className="relative">
+                        <div className="relative pt-9">
 
                           {/* HEAD */}
 
                           {visual.headIndex ===
                             index && (
-                            <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-center">
+                            <div className="absolute top-0 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap text-center">
 
                               <div className="mono text-[10px] font-extrabold text-[#426c49]">
                                 HEAD
@@ -529,7 +529,7 @@ export function LinkedListLessonPlayer({
                           {/* NODE BOX */}
 
                           <div
-                            className={`grid h-16 w-24 shrink-0 grid-cols-[1fr_28px] overflow-hidden rounded-xl border-2 shadow-sm transition-all duration-500 ${
+                            className={`grid h-16 w-20 shrink-0 grid-cols-[1fr_24px] overflow-hidden rounded-xl border-2 shadow-sm transition-all duration-500 ${
                               deleted
                                 ? "scale-95 border-red-300 bg-red-50 opacity-50"
                                 : highlighted
@@ -572,7 +572,7 @@ export function LinkedListLessonPlayer({
                           visual.nodes
                             .length -
                             1 && (
-                          <div className="mb-5 flex w-14 items-center">
+                          <div className="mb-5 flex w-9 items-center">
 
                             <div className="h-px flex-1 border-t-2 border-dashed border-[#92b696]" />
 
