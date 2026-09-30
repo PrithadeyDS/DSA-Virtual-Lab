@@ -1,0 +1,43 @@
+<svg
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    x="2"
+    y="2"
+    width="60"
+    height="60"
+    rx="14"
+    fill="#D4E6D7"
+    stroke="#9CC5A2"
+    stroke-width="3"
+  />
+
+  <!-- code brackets -->
+  <path
+    d="M23 22L15 32L23 42"
+    stroke="#416F47"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M41 22L49 32L41 42"
+    stroke="#416F47"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- slash -->
+  <path
+    d="M36 18L28 46"
+    stroke="#6F8F63"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+</svg>
