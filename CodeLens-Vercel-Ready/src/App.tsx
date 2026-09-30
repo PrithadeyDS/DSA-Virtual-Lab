@@ -46,23 +46,78 @@ const javaStarter = `public class Report {
     }
 }`;
 
+const cStarter = `#include <stdio.h>
+#include <stdlib.h>
+
+int sumRange(int values[], int count) {
+    int *total;
+
+    for (int i = 0; i <= count; i++) {
+        *total += values[i];
+    }
+
+    char name[16];
+    gets(name);
+
+    return *total;
+}`;
+
 const cppStarter = `#include <vector>
 
 int sumRange(std::vector<int> values, int count) {
     int* total;
+
     for (int i = 0; i <= count; i++) {
         *total += values[i];
     }
+
     Buffer* buffer = new Buffer(1024);
+
     return *total;
 }`;
 
-type Language = 'python' | 'java' | 'cpp';
+type Language = 'python' | 'java' | 'c' | 'cpp';
 
-const languages: { id: Language; label: string; badge: string; file: string; runtime: string; starter: string }[] = [
-  { id: 'python', label: 'Python', badge: 'py', file: 'main.py', runtime: 'Python 3.12', starter: starterCode },
-  { id: 'java', label: 'Java', badge: 'jv', file: 'Report.java', runtime: 'Java 21', starter: javaStarter },
-  { id: 'cpp', label: 'C++', badge: 'cpp', file: 'main.cpp', runtime: 'C++20', starter: cppStarter },
+const languages: {
+  id: Language;
+  label: string;
+  badge: string;
+  file: string;
+  runtime: string;
+  starter: string;
+}[] = [
+  {
+    id: 'python',
+    label: 'Python',
+    badge: 'py',
+    file: 'main.py',
+    runtime: 'Python 3.12',
+    starter: starterCode,
+  },
+  {
+    id: 'java',
+    label: 'Java',
+    badge: 'jv',
+    file: 'Report.java',
+    runtime: 'Java 21',
+    starter: javaStarter,
+  },
+  {
+    id: 'c',
+    label: 'C',
+    badge: 'c',
+    file: 'main.c',
+    runtime: 'C17',
+    starter: cStarter,
+  },
+  {
+    id: 'cpp',
+    label: 'C++',
+    badge: 'cpp',
+    file: 'main.cpp',
+    runtime: 'C++20',
+    starter: cppStarter,
+  },
 ];
 
 type Issue = { type: string; message: string; hints: string[]; solution: string; explanation: string };
@@ -163,7 +218,7 @@ function Home() {
     <section className="reveal grid items-end gap-10 lg:grid-cols-[1fr_340px]">
       <div><div className="eyebrow mb-5 flex items-center gap-2"><span className="size-1.5 rounded-full bg-[#6f8f63]" /> {activeLanguage.label} review studio</div>
         <h1 className="display max-w-3xl text-5xl font-extrabold text-[#385f3d] sm:text-7xl">Write better code.<br /><span className="text-[#6f8f63]">Understand why.</span></h1>
-        <p className="mt-6 max-w-xl text-base leading-7 text-[#847464]">CodeLens reviews your Python, Java and C++ code and teaches you how to improve it — one hint at a time.</p>
+        <p className="mt-6 max-w-xl text-base leading-7 text-[#847464]">CodeLens reviews your Python, Java, C and C++ code and teaches you how to improve it — one hint at a time.</p>
       </div>
       <div className="panel hidden p-5 lg:block"><div className="mb-4 flex items-center justify-between"><span className="eyebrow">Session signal</span><CircleCheck size={17} className="text-[#6f9a72]" /></div><div className="flex items-end justify-between"><span className="text-3xl font-extrabold text-[#385f3d]">{health ?? '—'}</span><span className="mono pb-1 text-[11px] text-[#b6aa9e]">health score</span></div><div className="mt-4 h-1.5 overflow-hidden rounded-full bg-[#d2e5d5]"><div className="h-full rounded-full bg-[#6f8f63] transition-all" style={{ width: `${health ?? 4}%` }} /></div><p className="mt-3 text-xs leading-5 text-[#b3a79a]">A score appears after your first review. Your code stays in your session.</p></div>
     </section>

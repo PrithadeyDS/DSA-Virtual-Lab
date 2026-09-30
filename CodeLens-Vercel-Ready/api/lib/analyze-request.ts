@@ -1,5 +1,6 @@
 import { analyzePython, type CodeIssue } from "./analyzer.js";
 import { analyzeJava } from "./analyzer-java.js";
+import { analyzeC } from "./analyzer-c.js";
 import { analyzeCpp } from "./analyzer-cpp.js";
 
 export type AnalysisPayload = { issue_count: number; issues: CodeIssue[] };
@@ -7,6 +8,7 @@ export type AnalysisPayload = { issue_count: number; issues: CodeIssue[] };
 const analyzers: Record<string, (code: string) => AnalysisPayload> = {
   python: analyzePython,
   java: analyzeJava,
+  c: analyzeC,
   cpp: analyzeCpp,
 };
 
@@ -20,14 +22,14 @@ export function analyzeRequestBody(body: unknown):
   const candidate = body as { code?: unknown; language?: unknown } | null;
   const code = candidate?.code;
   const language = candidate?.language ?? "python";
-  const validLanguage = language === "python" || language === "java" || language === "cpp";
+  const validLanguage = language === "python" || language === "java" || language === "c" || language === "cpp";
 
   if (typeof code !== "string" || code.trim().length === 0 || code.length > 50_000 || !validLanguage) {
     return {
       ok: false,
       status: 400,
       error:
-        "Code must be a non-empty string no longer than 50,000 characters, and language must be python, java or cpp.",
+        "Code must be a non-empty string no longer than 50,000 characters, and language must be python, java, c or cpp.",
       issues: [],
     };
   }
@@ -36,3 +38,4 @@ export function analyzeRequestBody(body: unknown):
 
   return { ok: true, data: analyze(code) };
 }
+

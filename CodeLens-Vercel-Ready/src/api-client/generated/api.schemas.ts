@@ -9,7 +9,7 @@ export interface HealthStatus {
   status: string;
 }
 
-export type AnalyzeCodeLanguage = "python" | "java" | "cpp";
+export type AnalyzeCodeLanguage = "python" | "java" | "c" | "cpp";
 
 export interface AnalyzeCodeInput {
   /**
@@ -38,4 +38,5 @@ export interface AnalysisResult {
 export interface ErrorResponse {
   error: string;
 }
+
 
