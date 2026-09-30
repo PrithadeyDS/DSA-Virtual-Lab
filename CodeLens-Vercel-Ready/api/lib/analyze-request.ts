@@ -1,6 +1,6 @@
-import { analyzePython, type CodeIssue } from "./analyzer";
-import { analyzeJava } from "./analyzer-java";
-import { analyzeCpp } from "./analyzer-cpp";
+import { analyzePython, type CodeIssue } from "./analyzer.js";
+import { analyzeJava } from "./analyzer-java.js";
+import { analyzeCpp } from "./analyzer-cpp.js";
 
 export type AnalysisPayload = { issue_count: number; issues: CodeIssue[] };
 

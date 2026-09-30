@@ -1,4 +1,4 @@
-import { analyzeRequestBody } from "./lib/analyze-request";
+import { analyzeRequestBody } from "./lib/analyze-request.js";
 
 export async function POST(request: Request) {
   try {

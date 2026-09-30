@@ -1,4 +1,4 @@
-import type { CodeIssue } from "./analyzer";
+import type { CodeIssue } from "./analyzer.js";
 
 type Rule = (code: string) => CodeIssue | null;
 
